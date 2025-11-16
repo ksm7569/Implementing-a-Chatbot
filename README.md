@@ -1,10 +1,10 @@
-📌 Sequence-to-Sequence 기반 한글 챗봇
+#Sequence-to-Sequence 기반 한글 챗봇
 LSTM Encoder–Decoder + SentencePiece + Beam Search
 이 프로젝트는 Sequence-to-Sequence(Seq2Seq) 구조를 기반으로
 한국어 Q/A 데이터셋을 학습하여 자연스러운 “대화형 문장”을 생성하는 한글 챗봇입니다.
 사용자의 질문을 이해하고 그에 맞는 답변을 생성하는 전체 파이프라인을 포함합니다.
 
-⭐ 1. 프로젝트 개요
+##1. 프로젝트 개요
 한국어 Q/A 데이터(ChatbotData.csv)를 활용한 챗봇 학습
 
 SentencePiece(Unigram) 기반 서브워드 토크나이징
@@ -19,41 +19,7 @@ Beam Search 기반 문장 생성 알고리즘 적용
 전처리 → 토크나이저 학습 → 모델 학습 → 디코딩 → 실제 대화 실행
 까지 모두 포함한 End-to-End 챗봇 프로젝트입니다.
 
-⭐ 2. Seq2Seq란 무엇인가?
-Seq2Seq는
-
-“하나의 문장을 입력받아 그 의미를 이해하고, 새로운 문장으로 변환하는 기술”
-입니다.
-
-PDF에서 설명된 구성요소는 아래 두 가지입니다:
-
-✔ Encoder
-입력 문장을 읽고 의미를 압축하여 context vector 생성
-
-사람으로 치면 “귀 + 뇌 역할”
-
-과정: 입력 토큰 → 임베딩 → LSTM → 문장 의미 요약
-
-✔ Decoder
-Encoder의 context vector를 기반으로
-<sos>(시작) → <eos>(끝)까지 단어를 순차적으로 생성
-
-사람으로 치면 “입 역할”
-
-📌 PDF에서 다룬 핵심 개념
-토큰화
-
-정수 인코딩
-
-임베딩
-
-컨텍스트 벡터
-
-Softmax 기반 단어 선택
-
-반복하여 문장 완성
-
-⭐ 4. 데이터 처리
+##2. 데이터 처리
 ✔ 텍스트 정제(clean_text)
 한글/영문/숫자/공백만 유지
 
@@ -76,7 +42,7 @@ SentencePiece의 원리는 PDF의
 “단어 → 숫자 → 임베딩 → 의미 반영”
 단계와 동일합니다.
 
-⭐ 5. 모델 구조 (LSTM Seq2Seq)
+##3. 모델 구조 (LSTM Seq2Seq)
 ✔ Encoder
 Embedding 레이어
 
@@ -104,7 +70,7 @@ PDF에서 설명된
 <시작> → 디코더 → Softmax → 단어 선택 → 반복 → <끝>
 과정을 그대로 구현하고 있습니다.
 
-⭐ 6. 학습 방식
+##4. 학습 방식
 Loss: Label Smoothing CrossEntropy
 
 Optimizer: Adam
@@ -124,7 +90,7 @@ Train: 85%
 
 Validation: 15%
 
-⭐ 7. 문장 생성 (Beam Search)
+##5. 문장 생성 (Beam Search)
 Greedy 방식이 아닌 Beam Search로 문장을 생성합니다.
 
 ✔ 적용된 기법
@@ -142,20 +108,8 @@ repetition penalty 적용
 Softmax 기반 단어 선택 + 반복 생성
 로직을 더 안정적이고 자연스럽게 확장한 방식입니다.
 
-⭐ 8. 실행 예시
-shell
-코드 복사
-> 안녕하세요
-반갑습니다. 무엇을 도와드릴까요?
 
-> 내일 날씨 어때?
-확실하진 않지만 내일은 괜찮을 것 같아요.
-
-> 고민이 있어
-듣고 있어요. 어떤 고민인가요?
-
-> /quit
-⭐ 10. 한계점 및 개선 방향
+##6. 한계점 및 개선 방향
 Attention 미적용 → 문맥 이해 부족
 
 단일 턴 대화만 가능
