@@ -1,4 +1,4 @@
-**# Sequence-to-Sequence 기반 한글 챗봇**
+# Sequence-to-Sequence 기반 한글 챗봇
 
 LSTM Encoder–Decoder + SentencePiece + Beam Search
 
@@ -7,6 +7,7 @@ LSTM Encoder–Decoder + SentencePiece + Beam Search
 사용자의 질문을 이해하고 그에 맞는 답변을 생성하는 전체 파이프라인을 포함합니다.
 
 **1. 프로젝트 개요**
+
 한국어 Q/A 데이터(ChatbotData.csv)를 활용한 챗봇 학습
 
 SentencePiece(Unigram) 기반 서브워드 토크나이징
@@ -22,6 +23,7 @@ Beam Search 기반 문장 생성 알고리즘 적용
 까지 모두 포함한 End-to-End 챗봇 프로젝트입니다.
 
 **2. 모델 구조 (LSTM Seq2Seq)**
+
 - Encoder
 Embedding 레이어, Multi-layer LSTM, PackedSequence로 variable-length 문장 처리, 마지막 hidden, cell → 디코더 초기 상태
 
@@ -35,8 +37,8 @@ decoder embedding 가중치를 generator 가중치와 공유
 시작 → 디코더 → Softmax → 단어 선택 → 반복 → 끝
 
 **3. 학습 방식**
-Loss: Label Smoothing CrossEntropy
 
+Loss: Label Smoothing CrossEntropy
 Optimizer: Adam
 Scheduler: NoamOpt
 Regularization:
@@ -45,6 +47,7 @@ UNK token dropout
 Gradient clipping
 
 **4. 한계점 및 개선 방향**
+
 Attention, Transport 미적용 → 문맥 이해 부족
 -> 이후 구현하도록 노력
 단일 턴 대화만 가능
