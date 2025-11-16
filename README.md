@@ -1,10 +1,10 @@
-#Sequence-to-Sequence 기반 한글 챗봇
+**#Sequence-to-Sequence 기반 한글 챗봇**
 LSTM Encoder–Decoder + SentencePiece + Beam Search
 이 프로젝트는 Sequence-to-Sequence(Seq2Seq) 구조를 기반으로
 한국어 Q/A 데이터셋을 학습하여 자연스러운 “대화형 문장”을 생성하는 한글 챗봇입니다.
 사용자의 질문을 이해하고 그에 맞는 답변을 생성하는 전체 파이프라인을 포함합니다.
 
-##1. 프로젝트 개요
+**##1. 프로젝트 개요**
 한국어 Q/A 데이터(ChatbotData.csv)를 활용한 챗봇 학습
 
 SentencePiece(Unigram) 기반 서브워드 토크나이징
