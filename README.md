@@ -1,10 +1,11 @@
-**#Sequence-to-Sequence 기반 한글 챗봇**
+Sequence-to-Sequence 기반 한글 챗봇
 LSTM Encoder–Decoder + SentencePiece + Beam Search
+
 이 프로젝트는 Sequence-to-Sequence(Seq2Seq) 구조를 기반으로
 한국어 Q/A 데이터셋을 학습하여 자연스러운 “대화형 문장”을 생성하는 한글 챗봇입니다.
 사용자의 질문을 이해하고 그에 맞는 답변을 생성하는 전체 파이프라인을 포함합니다.
 
-**##1. 프로젝트 개요**
+1. 프로젝트 개요
 한국어 Q/A 데이터(ChatbotData.csv)를 활용한 챗봇 학습
 
 SentencePiece(Unigram) 기반 서브워드 토크나이징
@@ -19,7 +20,7 @@ Beam Search 기반 문장 생성 알고리즘 적용
 전처리 → 토크나이저 학습 → 모델 학습 → 디코딩 → 실제 대화 실행
 까지 모두 포함한 End-to-End 챗봇 프로젝트입니다.
 
-##2. 데이터 처리
+2. 데이터 처리
 ✔ 텍스트 정제(clean_text)
 한글/영문/숫자/공백만 유지
 
@@ -38,11 +39,11 @@ character_coverage: 0.9995
 
 토큰 충돌 방지: ID offset = 4 적용
 
-SentencePiece의 원리는 PDF의
+SentencePiece의 원리는
 “단어 → 숫자 → 임베딩 → 의미 반영”
-단계와 동일합니다.
+구조와 동일합니다.
 
-##3. 모델 구조 (LSTM Seq2Seq)
+3. 모델 구조 (LSTM Seq2Seq)
 ✔ Encoder
 Embedding 레이어
 
@@ -68,9 +69,9 @@ decoder embedding 가중치를 generator 가중치와 공유
 
 PDF에서 설명된
 <시작> → 디코더 → Softmax → 단어 선택 → 반복 → <끝>
-과정을 그대로 구현하고 있습니다.
+과정이 동일하게 구현되어 있습니다.
 
-##4. 학습 방식
+4. 학습 방식
 Loss: Label Smoothing CrossEntropy
 
 Optimizer: Adam
@@ -90,8 +91,8 @@ Train: 85%
 
 Validation: 15%
 
-##5. 문장 생성 (Beam Search)
-Greedy 방식이 아닌 Beam Search로 문장을 생성합니다.
+5. 문장 생성 (Beam Search)
+Greedy 방식이 아니라 Beam Search로 문장을 생성합니다.
 
 ✔ 적용된 기법
 beam_size = 4
@@ -108,8 +109,7 @@ repetition penalty 적용
 Softmax 기반 단어 선택 + 반복 생성
 로직을 더 안정적이고 자연스럽게 확장한 방식입니다.
 
-
-##6. 한계점 및 개선 방향
+6. 한계점 및 개선 방향
 Attention 미적용 → 문맥 이해 부족
 
 단일 턴 대화만 가능
