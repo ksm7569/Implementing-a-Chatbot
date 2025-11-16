@@ -8,13 +8,13 @@ LSTM Encoder–Decoder + SentencePiece + Beam Search
 
 **1. 프로젝트 개요**
 
-한국어 Q/A 데이터(ChatbotData.csv)를 활용한 챗봇 학습
+- 한국어 Q/A 데이터(ChatbotData.csv)를 활용한 챗봇 학습
 
-SentencePiece(Unigram) 기반 서브워드 토크나이징
+- SentencePiece(Unigram) 기반 서브워드 토크나이징
 
-LSTM Encoder–Decoder 구조로 Seq2Seq 대화 모델 구현
+- LSTM Encoder–Decoder 구조로 Seq2Seq 대화 모델 구현
 
-Beam Search 기반 문장 생성 알고리즘 적용
+- Beam Search 기반 문장 생성 알고리즘 적용
 
 콘솔 기반 실시간 대화 기능 제공
 
@@ -38,19 +38,19 @@ decoder embedding 가중치를 generator 가중치와 공유
 
 **3. 학습 방식**
 
-Loss: Label Smoothing CrossEntropy
-Optimizer: Adam
-Scheduler: NoamOpt
-Regularization:
-Dropout
-UNK token dropout
-Gradient clipping
+- Loss: Label Smoothing CrossEntropy
+- Optimizer: Adam
+- Scheduler: NoamOpt
+- Regularization:
+- Dropout
+- UNK token dropout
+- Gradient clipping
 
 **4. 한계점 및 개선 방향**
 
-Attention, Transport 미적용 → 문맥 이해 부족
+- Attention, Transport 미적용 → 문맥 이해 부족
 -> 이후 구현하도록 노력
-단일 턴 대화만 가능
+- 단일 턴 대화만 가능
 -> 학습방식에 대해 좀 더 알아보고 구현되도록 노력
    
 데이터셋이 작아 답변 다양성 낮음
