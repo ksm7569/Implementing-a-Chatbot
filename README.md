@@ -16,9 +16,8 @@ LSTM Encoder–Decoder + SentencePiece + Beam Search
 
 - Beam Search 기반 문장 생성 알고리즘 적용
 
-콘솔 기반 실시간 대화 기능 제공
+- 콘솔 기반 실시간 대화 기능 제공
 
-이 노트북은
 전처리 → 토크나이저 학습 → 모델 학습 → 디코딩 → 실제 대화 실행
 까지 모두 포함한 End-to-End 챗봇 프로젝트입니다.
 
