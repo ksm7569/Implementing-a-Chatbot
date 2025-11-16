@@ -1,4 +1,4 @@
-**#Sequence-to-Sequence 기반 한글 챗봇**
+**# Sequence-to-Sequence 기반 한글 챗봇**
 
 LSTM Encoder–Decoder + SentencePiece + Beam Search
 
